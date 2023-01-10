@@ -7,6 +7,16 @@
 
 ## 快速开始
 
+### 安装
+
+```bash
+$ go install github.com/zhengxiaoyao0716/pc@latest
+```
+
+或者下载编译好的文件
+
+### 使用
+
 ```bash
 $ punctuation_replace paper.txt
 $ ls

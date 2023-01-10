@@ -1,3 +1,3 @@
-module github.com/dengjiawen8955/punctuation_replace
+module github.com/dengjiawen8955/pc
 
 go 1.18
