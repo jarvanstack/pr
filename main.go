@@ -7,7 +7,17 @@ import (
 	"regexp"
 )
 
+const (
+	usage = `Usage: pr [filename]`
+)
+
 func main() {
+	// 参数检查
+	if os.Args == nil || len(os.Args) < 2 {
+		fmt.Println(usage)
+		return
+	}
+
 	// 获取输入的第一个参数作为文件名
 	filename := os.Args[1]
 
