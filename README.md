@@ -10,7 +10,7 @@
 ### 安装
 
 ```bash
-$ go install github.com/dengjiawen8955/pc@latest
+$ go install github.com/dengjiawen8955/pr@latest
 go: downloading github.com/dengjiawen8955/pc v0.0.0-20230110133323-13b5d6a49fb2
 ```
 
