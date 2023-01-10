@@ -16,6 +16,8 @@ go: downloading github.com/dengjiawen8955/pc v0.0.0-20230110133323-13b5d6a49fb2
 
 或者下载编译好的文件
 
+<https://github.com/dengjiawen8955/pr/releases>
+
 ### 使用
 
 ```bash
