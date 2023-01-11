@@ -32,7 +32,7 @@ func main() {
 	newBs := replace(string(bs))
 
 	// 写入文件
-	newFileName := filename + ".replace"
+	newFileName := "replace." + filename
 	err = ioutil.WriteFile(newFileName, []byte(newBs), 0644)
 	if err != nil {
 		fmt.Println(err)
