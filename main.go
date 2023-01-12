@@ -9,14 +9,16 @@ import (
 	"regexp"
 )
 
-const (
-	usage = `Usage: pr [filename]`
-)
+func printUsage() {
+	fmt.Println("Usage: pr [filename]")
+	fmt.Println("Punctuation replace:    pr test.txt")
+	fmt.Println("Update tool:            pr update")
+}
 
 func main() {
 	// 参数检查
 	if os.Args == nil || len(os.Args) < 2 {
-		fmt.Println(usage)
+		printUsage()
 		return
 	}
 
