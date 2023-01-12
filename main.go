@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	Version = "v1.0"
+	Version = "v1.1"
 )
 
 func printUsage() {
@@ -72,7 +72,7 @@ func Update() {
 func update() error {
 	cmd := `GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go install github.com/dengjiawen8955/pr@latest`
 	if runtime.GOOS == "windows" {
-		cmd = `set GOPROXY=https://goproxy.cn,direct && go install github.com/dengjiawen8955/pr@latest`
+		cmd = `set GOPROXY=https://goproxy.cn/,direct && go install github.com/dengjiawen8955/pr@latest`
 	}
 	info, err := execx.Run(cmd, "")
 	if err != nil {
