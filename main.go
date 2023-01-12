@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path"
 	"regexp"
 )
 
@@ -39,7 +40,7 @@ func main() {
 	newBs := replace(string(bs))
 
 	// 写入文件
-	newFileName := "replace." + filename
+	newFileName := filename + ".replace" + path.Ext(filename)
 	err = ioutil.WriteFile(newFileName, []byte(newBs), 0644)
 	if err != nil {
 		fmt.Println(err)
@@ -47,7 +48,7 @@ func main() {
 	}
 
 	// 打印成功消息
-	fmt.Printf("Success! New file: %s", newFileName)
+	fmt.Printf("Success! New file: %s\n", newFileName)
 }
 
 // 自动更新软件
