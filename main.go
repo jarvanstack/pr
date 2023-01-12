@@ -11,7 +11,12 @@ import (
 	"github.com/zeromicro/go-zero/tools/goctl/rpc/execx"
 )
 
+var (
+	Version = "v1.0"
+)
+
 func printUsage() {
+	fmt.Println("pr version: " + Version)
 	fmt.Println("Usage: pr [filename]")
 	fmt.Println("Punctuation replace:    pr test.txt")
 	fmt.Println("Update tool:            pr update")
