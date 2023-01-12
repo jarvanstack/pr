@@ -38,6 +38,9 @@ func main() {
 		fmt.Println(err)
 		return
 	}
+
+	// 打印成功消息
+	fmt.Printf("Success! New file: %s", newFileName)
 }
 
 func replace(data string) string {
