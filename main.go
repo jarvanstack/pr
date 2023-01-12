@@ -4,9 +4,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"os/exec"
 	"path"
 	"regexp"
+	"runtime"
+
+	"github.com/zeromicro/go-zero/tools/goctl/rpc/execx"
 )
 
 func printUsage() {
@@ -27,7 +29,7 @@ func main() {
 
 	// 更新
 	if filename == "update" {
-		update()
+		Update()
 		return
 	}
 
@@ -55,19 +57,25 @@ func main() {
 
 // 自动更新软件
 // 调用命令行 go install github.com/dengjiawen8955/pr@latest
-func update() {
-	// 执行命令
-	cmd := exec.Command("go", "install", "github.com/dengjiawen8955/pr@latest")
-	cmd.Stdout = os.Stdout
-	fmt.Printf("cmd: %v\n", cmd.String())
-	err := cmd.Run()
+func Update() {
+	err := update()
 	if err != nil {
-		fmt.Printf("Run failed: %v\n", err)
-		return
+		fmt.Printf("err: %v\n", err)
 	}
 
-	// 打印成功消息
-	fmt.Println("Update success!")
+}
+func update() error {
+	cmd := `GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go install github.com/dengjiawen8955/pr@latest`
+	if runtime.GOOS == "windows" {
+		cmd = `set GOPROXY=https://goproxy.cn,direct && go install github.com/dengjiawen8955/pr@latest`
+	}
+	info, err := execx.Run(cmd, "")
+	if err != nil {
+		return err
+	}
+
+	fmt.Print(info)
+	return nil
 }
 
 func replace(data string) string {
