@@ -5,9 +5,9 @@ import (
 	"io/ioutil"
 	"os"
 	"path"
-	"regexp"
 	"runtime"
 
+	"github.com/dengjiawen8955/pr/util"
 	"github.com/zeromicro/go-zero/tools/goctl/rpc/execx"
 )
 
@@ -46,7 +46,7 @@ func main() {
 	}
 
 	// 替换
-	newBs := replace(string(bs))
+	newBs := util.Replace(string(bs))
 
 	// 写入文件
 	newFileName := filename + ".replace" + path.Ext(filename)
@@ -81,56 +81,4 @@ func update() error {
 
 	fmt.Print(info)
 	return nil
-}
-
-func replace(data string) string {
-	// 句号
-	re := regexp.MustCompile(`([\p{Han}])\.[ ]*`)
-	output := re.ReplaceAllString(data, `$1。`)
-
-	// 逗号
-	re = regexp.MustCompile(`([\p{Han}]),[ ]*`)
-	output = re.ReplaceAllString(output, `$1，`)
-
-	// 冒号
-	re = regexp.MustCompile(`([\p{Han}]):[ ]*`)
-	output = re.ReplaceAllString(output, `$1：`)
-
-	// 分号
-	re = regexp.MustCompile(`([\p{Han}]);[ ]*`)
-	output = re.ReplaceAllString(output, `$1；`)
-
-	// 问号
-	re = regexp.MustCompile(`([\p{Han}])\?[ ]*`)
-	output = re.ReplaceAllString(output, `$1？`)
-
-	// 感叹号
-	re = regexp.MustCompile(`([\p{Han}])![ ]*`)
-	output = re.ReplaceAllString(output, `$1！`)
-
-	// 左括号
-	re = regexp.MustCompile(`[ ]*\(([\p{Han}])`)
-	output = re.ReplaceAllString(output, `（$1`)
-
-	// 右括号
-	re = regexp.MustCompile(`([\p{Han}])\)[ ]*`)
-	output = re.ReplaceAllString(output, `$1）`)
-
-	// 左引号
-	re = regexp.MustCompile(`[ ]*"([\p{Han}])`)
-	output = re.ReplaceAllString(output, `“$1`)
-
-	// 右引号
-	re = regexp.MustCompile(`([\p{Han}])"[ ]*`)
-	output = re.ReplaceAllString(output, `$1”`)
-
-	// 左小引号
-	re = regexp.MustCompile(`[ ]*'([\p{Han}])`)
-	output = re.ReplaceAllString(output, `‘$1`)
-
-	// 右小引号
-	re = regexp.MustCompile(`([\p{Han}])'[ ]*`)
-	output = re.ReplaceAllString(output, `$1’`)
-
-	return output
 }
