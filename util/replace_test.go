@@ -24,7 +24,8 @@ func Test_replace(t *testing.T) {
 4! 汉字! 汉字
 5(汉字)
 6"汉字"
-7'汉字'`,
+7'汉字'
+8.(1)`,
 			},
 			want: `1: 汉字：汉字
 2; 汉字；汉字
@@ -32,7 +33,8 @@ func Test_replace(t *testing.T) {
 4! 汉字！汉字
 5（汉字）
 6“汉字”
-7‘汉字’`,
+7‘汉字’
+8.（1）`,
 		},
 	}
 	for _, tt := range tests {

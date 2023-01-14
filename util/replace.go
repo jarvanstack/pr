@@ -28,11 +28,11 @@ func Replace(data string) string {
 	output = re.ReplaceAllString(output, `$1！`)
 
 	// 左括号
-	re = regexp.MustCompile(`[ ]*\(([\p{Han}])`)
+	re = regexp.MustCompile(`[ ]*\(([\p{Han}|1-9])`)
 	output = re.ReplaceAllString(output, `（$1`)
 
 	// 右括号
-	re = regexp.MustCompile(`([\p{Han}])\)[ ]*`)
+	re = regexp.MustCompile(`([\p{Han}|1-9])\)[ ]*`)
 	output = re.ReplaceAllString(output, `$1）`)
 
 	// 左引号
