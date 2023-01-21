@@ -1,0 +1,4 @@
+# /bin/bash
+TOKEN="you token"
+URL=$1
+yuquepr ${TOKEN} ${URL}
